@@ -1,25 +1,29 @@
-#include "holberton.h"
-/**
- * _abs - entry to the program
- * @n: argument to be checked
- * Return: the absolte value of @n
- */
+#include "main.h"
 
-int _abs(int n)
-{
-	return (n < 0 ? -1 * n : n);
-}
 /**
- * print_last_digit - entry to the funciton
- * @n: value
- * Return: last digit
+ *  print_last_digit - last digit
+ *
+ *@n: The int to print
+ * Return: Always 0.
  */
 
 int print_last_digit(int n)
-{
-	int lastDigit;
 
-	lastDigit = _abs((n % 10));
-	_putchar(lastDigit + 48);
-	return (lastDigit);
+{
+int last_digit;
+
+if (n < 0)
+{
+last_digit = (-1 * (n % 10));
+_putchar (last_digit + '0');
+return (last_digit);
+}
+
+else
+{
+last_digit = (n % 10);
+_putchar (last_digit + '0');
+return (last_digit);
+}
+
 }
