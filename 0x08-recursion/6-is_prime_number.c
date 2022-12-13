@@ -1,31 +1,45 @@
-#include "main.h"
+#include "holberton.h"
 
 /**
- *prime - check for prime numbers
- *@i: integer
- *@n:integer
- *
- *Return: integer
+ * prime - recursively divide by higher divisor, skip even nums
+ * @n: number to check if prime
+ * @d: divisor
+ * Return: 1 if prime, 0 if not, or recursive function call
  */
 
-int prime(int i, int n)
+int prime(int n, int d)
 {
-if (n < 2 || !(n % i))
-return (0);
-else if (i > n / 2)
+if (n == d)
+{
 return (1);
+}
+
+else if (n % d == 0)
+{
+return (0);
+}
+
 else
-return (prime(i + 1, n));
+{
+return (prime(n, d + 1));
+}
 }
 
 /**
- *is_prime_number - check for prime numbers
- *@n: integer
- *
- *Return: integer
+ * is_prime_number - check if prime
+ * @n: number to check
+ * Return: 1 if prime, 0 if not
  */
 
 int is_prime_number(int n)
 {
-return (prime(2, n));
+if (n <= 1)
+{
+return (0);
+}
+
+else
+{
+return (prime(n, 2));
+}
 }

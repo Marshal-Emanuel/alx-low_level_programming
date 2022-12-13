@@ -1,1 +1,1 @@
-my readme file for pointer arry sting
+0x05. C - Pointers, arrays and strings

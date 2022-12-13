@@ -1,18 +1,17 @@
-#include "main.h"
+#include "holberton.h"
+
 /**
- * _isalpha - Return 1 if c is a letter. lowercase or uppercase
+ * _isalpha - checks if its alpha char
  *
- *@c: The int to print
- * Return: Always 0.
+ *@c: character to be checked
+ * Return: 1 if letter 0 if not
  */
 int _isalpha(int c)
 {
-if ((c > 'a' && c < 'z') || (c > 'A' && c < 'Z'))
-{
-return (1);
-}
-else
-{
-return (0);
-}
+	if (c >= 'a' && c <= 'z')
+		return (1);
+	else if (c >= 'A' && c <= 'Z')
+		return (1);
+	else
+		return (0);
 }

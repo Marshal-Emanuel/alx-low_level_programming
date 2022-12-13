@@ -1,68 +1,37 @@
-#include "main.h"
-/**
- *_strlen - count array
- *@s: array of elements
- *Return: 1
- */
-
-int _strlen(char *s)
-{
-unsigned int i;
-
-i = 0;
-while (s[i] != '\0') /*count character of string*/
-{
-i++;
-}
-
-return (i);
-}
+#include <stdio.h>
+#include <stdlib.h>
+#include "holberton.h"
 
 /**
- *_strcpy - copy arrays
- *@src: array of elements
- *@dest: dest array
- *Return: dest
- */
-
-char *_strcpy(char *dest, char *src)
-{
-int i = 0;
-
-while (src[i] != '\0')
-{
-dest[i] = src[i];
-i++;
-}
-dest[i] = '\0';
-
-return (dest);
-}
-
-/**
- *_strdup - array for prints a string
- *@str: array of elements
- *Return: pointer
+ * _strdup - returns a pointer to a newly allocated space in memory,
+ * which contains a copy of the string given as a parameter
+ * @str: string to duplicate
+ * Return: pointer to duplicated string in allocated memory
  */
 
 char *_strdup(char *str)
 {
-char *dst;
-unsigned int size;
+char *str_copy;
+int i = 0, size = 0;
 
-if (str == 0)
-{
+if (str == NULL) /* validate string input */
 return (NULL);
+
+while (*(str + i))
+size++, i++; /* add null terminator to size */
+size++;
+
+str_copy = malloc(sizeof(char) * size); /* allocate memory */
+
+if (str_copy == NULL) /* validate memory */
+return (NULL);
+
+i = 0;
+while (i < size)
+{
+*(str_copy + i) = *(str + i);
+i++;
 }
 
-size = _strlen(str) + 1;
-
-dst = (char *) malloc(size *sizeof(char));
-
-if (dst == 0)
-{
-return (NULL);
-}
-_strcpy(dst, str);
-return (dst);
+return (str_copy);
 }

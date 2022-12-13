@@ -1,23 +1,23 @@
-#include "main.h"
-#include<stdio.h>
+#include "holberton.h"
+#include <stdio.h>
 
 /**
- * main - Lists all the natural numbers below 1024 (excluded)
- *        that are multiples of 3 or 5.
+ * main - psum of multiples of 3 and 5
  *
- * Return: Always 0.
+ * Return: 0 if success
  */
 int main(void)
 {
-	int i, sum = 0;
+	int n, sum = 0;
 
-	for (i = 0; i < 1024; i++)
+	for (n = 1023; n >= 0; n--)
 	{
-		if ((i % 3) == 0 || (i % 5) == 0)
-			sum += i;
+		if (n % 3 == 0 || n % 5 == 0)
+		{
+			sum += n;
+		}
 	}
-
-	printf("%d\n", sum);
-
+	printf("%d", sum);
+	printf("\n");
 	return (0);
 }

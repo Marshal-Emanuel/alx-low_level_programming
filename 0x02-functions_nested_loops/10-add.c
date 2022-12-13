@@ -1,14 +1,12 @@
-#include "main.h"
-#include <stdio.h>
+#include "holberton.h"
 
 /**
- * add -prints add two numbers
- *@i: print int i
- *@k: print int k
- * Return: Always 0.
+ * add - add two integers
+ * @a: two integer arguments
+ * @b: two integer arguments
+ * Return: sum
  */
-
-int add(int i, int k)
+int add(int a, int b)
 {
-return (i + k);
+	return (a + b);
 }

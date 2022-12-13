@@ -1,23 +1,25 @@
-#include "main.h"
+#include "holberton.h"
+
 /**
-* @brief 
-* 
-*/
-*
-* Return: Always 0.
-*/
+ *print_alphabet_x10 - prints alphabet 10X
+ *
+ * Return: always 0
+ */
 void print_alphabet_x10(void)
 {
-int alphabet;
-int count;
-count = 0;
-while (count < 10)
-{
-for (alphabet = 'a' ; alphabet <= 'z'; alphabet++)
-{
-_putchar(alphabet);
-}
-count++;
-_putchar('\n');
-}
+	char l;
+	int j;
+
+	j = 0;
+	while (j <= 9)
+	{
+		l = 'a';
+		while (l <= 'z')
+		{
+			_putchar(l);
+			l++;
+		}
+		_putchar(10);
+		j++;
+	}
 }

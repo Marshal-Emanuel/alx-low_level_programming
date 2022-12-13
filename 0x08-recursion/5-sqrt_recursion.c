@@ -1,30 +1,41 @@
-#include "main.h"
+#include "holberton.h"
 
 /**
- *square - square conditions
- *@i: integer
- *@n: integer
- *
- *Return: square of number
+ * root_finder - find square root of n, starting from the smallest possible, 0
+ * @num: number
+ * @root: root of num
+ * Return: natural square root, or -1 if not natural root
  */
 
-int square(int i, int n)
+int root_finder(int num, int root)
 {
-if (i * i == n)
-return (i);
-else if (i > n / 2)
+if (root * root > num)
+{
 return (-1);
+}
+
+else if (root * root == num)
+{
+return (root);
+}
+
 else
-return (square(i + 1, n));
+{
+return (root_finder(num, root + 1));
+}
 }
 
 /**
- *_sqrt_recursion - square integer
- *@n: integer
- *
- *Return: square of number
+ * _sqrt_recursion - find natural square root of n
+ * @n: n
+ * Return: natural square root, or -1 if not natural root
  */
+
 int _sqrt_recursion(int n)
 {
-return (square(1, n));
+if (n < 0)
+{
+return (-1);
+}
+return (root_finder(n, 0));
 }

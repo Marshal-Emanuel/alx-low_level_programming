@@ -1,22 +1,24 @@
 #include <stdio.h>
+
 /**
-* main - print if the number is postive, zero, or negative
-*
-* Description: using the main function
-* this program prints "Programming is positive, zero, or negative
-* Return: 0
-*/
+ *main - prints hexadecimal base 0123456789abcdef, using putchar
+ *Return: Always 0 (Success)
+ */
 int main(void)
 {
-char c;
-for (c = '0'; c <= '9'; c++)
-{
-putchar(c);
-}
-for (c = 'a'; c <= 'f'; c++)
-{
-putchar(c);
-}
-putchar('\n');
-return (0);
+	int n = '0';
+	int a_to_f = 'a';
+
+	while (n <= '9') /*print 0-9*/
+	{
+		putchar(n);
+		n++;
+	}
+	while (a_to_f <= 'f') /*print a-f to finish hexbase*/
+	{
+		putchar(a_to_f);
+		a_to_f++;
+	}
+	putchar('\n');
+	return (0);
 }

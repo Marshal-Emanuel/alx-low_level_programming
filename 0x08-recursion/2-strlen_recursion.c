@@ -1,19 +1,18 @@
-#include "main.h"
+#include "holberton.h"
 
 /**
- *_strlen_recursion - return the length of string
- *@s: string
- *
- *Return: length
+ * _strlen_recursion - return string length
+ * @s: string
+ * Return: string length
  */
 
 int _strlen_recursion(char *s)
 {
-int a;
-
 if (*s == '\0')
+{
 return (0);
+}
 
-a = _strlen_recursion(s + 1) + 1;
-return (a);
+s++;
+return (_strlen_recursion(s) + 1);
 }

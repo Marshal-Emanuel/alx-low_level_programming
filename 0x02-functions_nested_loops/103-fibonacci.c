@@ -1,31 +1,26 @@
 #include <stdio.h>
 
 /**
- * main - finds and prints the sum of the even-valued terms
- * followed by a new line
- * Return: Always 0 (Success)
+ * main - print sum of even Fionacci sequence up to 4,000,000
+ * Return: 0
  */
 int main(void)
 {
-	int i;
-	unsigned long int j, k, next, sum;
+	int sum_of_evens = 0;
+	int a;
+	int b;
+	int sum = 1;
 
-	j = 1;
-	k = 2;
-	sum = 0;
-
-	for (i = 1; i <= 33; ++i)
+	a = 1;
+	b = 1;
+	while (b < 4000000)
 	{
-		if (j < 4000000 && (j % 2) == 0)
-		{
-			sum = sum + j;
-		}
-		next = j + k;
-		j = k;
-		k = next;
+		sum = a + b;
+		a = b;
+		b = sum;
+		if ((sum <= 4000000) && (sum % 2 == 0))
+			sum_of_evens += sum;
 	}
-
-	printf("%lu\n", sum);
-
+	printf("%d\n", sum_of_evens);
 	return (0);
 }

@@ -1,1 +1,1 @@
-my readme file for pointer array and string
+0x06. C - More pointers, arrays and strings
