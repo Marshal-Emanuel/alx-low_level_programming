@@ -23,4 +23,4 @@
 6. 100- build on 4; add .PHONY rule
 
 #### Author
-[Jane Ng'ethe](https://github.com/Janengethe)
+[Emanel Kioko](https://github.com/Marshal-Emanuel)
