@@ -1,23 +1,18 @@
 CC = gcc
-SRC = main.c holberton.c
+SRC = main.c school.c
 OBJ = $(SRC:.c=.o)
-NAME = holberton
+NAME = school
 RM = rm -f
 
-# make all files executable
-all: m.h $(OBJ)
+all: $(OBJ)
 	$(CC) $(OBJ) -o $(NAME)
 
-# delete temporary files and executable
 clean:
 	$(RM) *~ $(NAME)
 
-# deletes the object files
 oclean:
 	$(RM) $(OBJ)
 
-# deletes tmp files, executable anf object files
 fclean: clean oclean
 
-# Forces recompilation of all source files
-re: oclean all
+re: fclean all

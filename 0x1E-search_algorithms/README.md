@@ -1,2 +1,1 @@
-## 0x1E. C - Search Algorithms
-> Search algorithm, time complexity and space complexity
+0x1E-search_algorithms

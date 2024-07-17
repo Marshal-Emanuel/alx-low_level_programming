@@ -1,21 +1,41 @@
-#include "holberton.h"
+#include "main.h"
 
+
+
+
+/*******************START*******************/
 /**
- *set_bit - sets the value of a bit to 1 at a given index
- *@n: pointer to integers
- *@index: index of bits
- *Return: 1 if it worked, or -1 if an error occurred
+ * set_bit - function: sets bit in position to one (1).
+ * @n:pointer: shows at the bit.
+ * @index:shows the index to be set.
+ *
+ * Return: On success, 1 is returned
+ *         Elsewhere we get -1 when on failure.
+ *
+ *
+ *
+ * ALX PROJECTS
  */
+
+
+
 int set_bit(unsigned long int *n, unsigned int index)
 {
-unsigned long int bit = 1;
-if (n == 0)
-return (-1);
+	/*set new constants to work with*/
+	/**
+	 * number = n.
+	 * tag = index.
+	 */
+	unsigned long int *number = n;
+	unsigned int tag = index;
 
-if ((sizeof(unsigned int long) * 8) < index)
-return (-1);
+	if (number == NULL || (tag > (sizeof(unsigned long int) * 8) - 1))
+		return (-1);
 
-bit = bit << index;
-*n = *n | bit;
-return (1);
+	/*Check*/
+	*number |= (1 << tag);
+
+	/*Return Success*/
+	return (1);
 }
+/******************STOP**********************/

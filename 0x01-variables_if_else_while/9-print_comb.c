@@ -1,22 +1,22 @@
 #include <stdio.h>
-
+#include <ctype.h>
 /**
- *main - print combination of all single-digit numbers using putchar
- *Return: always return 0 (success)
- */
+*main - Prints all single digits with , and space followed by new line
+*
+*Return: returns 0
+*/
 int main(void)
 {
-	int n = '0';
+	int digit;
 
-	while (n <= '9')
+	for (digit = '0'; digit <= '9'; digit++)
 	{
-		putchar(n);
-		if (n != '9')
-		{
-			putchar(',');
-			putchar(' ');
-		}
-		n++;
+		putchar(digit);
+		if (digit == '9')
+			continue;
+
+		putchar(',');
+		putchar(' ');
 	}
 	putchar('\n');
 	return (0);

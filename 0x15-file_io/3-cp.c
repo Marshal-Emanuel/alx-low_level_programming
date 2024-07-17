@@ -1,65 +1,122 @@
-#include "holberton.h"
+#include "main.h"
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+char *create_buffer(char *file);
+void close_file(int fd);
+
+
+/*****************************START**********************************/
+/**
+ * create_buffer - function; char_allocates a  1024 bytes of memory to a buffer
+ *
+ * @file:pointer: file_name where buffer is storing char
+ *
+ * Return:pointer: pointes to the new allocated buffer
+ *
+ * ALX PROJECTS
+ */
+char *create_buffer(char *file)
+{
+	char *f_l = file;
+	char *buffer;
+
+	buffer = malloc(sizeof(char) * 1024);
+
+	if (buffer == NULL)
+	{
+		dprintf(STDERR_FILENO,
+			"Error: Can't write to %s\n", f_l);
+		exit(99);
+	}
+
+	return (buffer);
+}
 
 /**
- * __exit - prints error messages and exits with exit value
- * @error: num is either exit value or file descriptor
- * @s: str is a name, either of the two filenames
- * @fd: file descriptor
- * Return: 0 on success
- **/
-int __exit(int error, char *s, int fd)
+ * close_file -function; close descriptors of a file
+ * @fd: refers to a closed file descriptor.
+ *
+ *
+ * GET WRITE
+ */
+void close_file(int fd)
 {
-switch (error)
-{
-case 97:
-dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
-exit(error);
-case 98:
-dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", s);
-exit(error);
-case 99:
-dprintf(STDERR_FILENO, "Error: Can't write to %s\n", s);
-exit(error);
-case 100:
-dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
-exit(error);
-default:
-return (0);
+	int count;
+
+	count = close(fd);
+
+	if (count == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
+		exit(100);
+	}
 }
-}
+
 /**
- *main - print to command line
- *@argc: arguments
- *@argv: array of argc
- *Return: 0
+ * main - function; copy contents from a file to the next
+ *
+ * @argc: arguments in the code
+ *
+ * @argv: array of pointers
+ *
+ * Return:The function must return only 0 on success
+ *
+ * Description: incorrect - return 97.
+ *              cannot be read - return 98.
+ *              created or written to - return 99.
+ *              cannot be closed - return 100.
+ *              ~final~
  */
 int main(int argc, char *argv[])
 {
-int file_from, file_to, n_read, n_write;
-char buffer[BUFSIZ];
+	int m_f;
+	int w_r;
+	int o_t;
+	char *buffer;
+	int j;
 
-if (argc != 3)
-__exit(97, NULL, 0);
+	if (argc != 3)
+	{
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
+		exit(97);
+	}
 
-file_from = open(argv[1], O_RDONLY);
-if (file_from == -1)
-__exit(98, argv[1], 0);
+	buffer = create_buffer(argv[2]);
+	m_f = open(argv[1], O_RDONLY);
+	j = read(m_f, buffer, 1024);
+	o_t = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 
-file_to = open(argv[2], O_CREAT | O_TRUNC | O_WRONLY, 0664);
-if (file_to == -1)
-__exit(99, argv[2], 0);
+	do {
+		if (m_f == -1 || j == -1)
+		{
+			dprintf(STDERR_FILENO,
+				"Error: Can't read from file %s\n", argv[1]);
+			free(buffer);
+			exit(98);
+		}
 
-while ((n_read = read(file_from, buffer, BUFSIZ)) != 0)
-{
-if (n_read == -1)
-__exit(98, argv[1], 0);
+		w_r = write(o_t, buffer, j);
+		if (o_t == -1 || w_r == -1)
+		{
+			dprintf(STDERR_FILENO,
+				"Error: Can't write to %s\n", argv[2]);
+			free(buffer);
+			exit(99);
+		}
 
-n_write = write(file_to, buffer, n_read);
-if (n_write == -1)
-__exit(99, argv[2], 0);
+		j = read(m_f, buffer, 1024);
+		o_t = open(argv[2], O_WRONLY | O_APPEND);
+
+	} while (j > 0);
+
+	free(buffer);
+	close_file(m_f);
+	close_file(o_t);
+
+	return (0);
 }
-
-close(file_to) == -1 ? (__exit(100, NULL, file_to)) : close(file_to);
-close(file_from) == -1 ? (__exit(100, NULL, file_from)) : close(file_from);
-return (0);
-}
+/*******************************STOP***************************/

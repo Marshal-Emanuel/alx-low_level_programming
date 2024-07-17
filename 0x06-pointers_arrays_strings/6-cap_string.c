@@ -1,28 +1,38 @@
-#include "holberton.h"
+#include "main.h"
 
 /**
- *cap_string - capitalizes letters in string
- *@s: string
- *Return: nothing
+ * cap_string - Capitalizes all words of a string.
+ * @str: The string to be capitalized.
+ *
+ * Return: A pointer to the changed string.
  */
-char *cap_string(char *s)
+char *cap_string(char *str)
 {
-int i = 0;
-if (s[i] >= 'a' && s[i] <= 'z')
-s[i] = s[i] - 'a' + 'A';
-i++;
-while (s[i] != '\0')
-{
+	int index = 0;
 
-if ((s[i] >= 'a' && s[i] <= 'z')
-&& (s[i - 1] == ',' || s[i - 1] == ';' || s[i - 1] == '.' ||
-s[i - 1] == '!' || s[i - 1] == '?' || s[i - 1] == '"' ||
-s[i - 1] == '(' || s[i - 1] == ')' || s[i - 1] == '{' ||
-s[i - 1] == '}' || s[i - 1] == ' ' || s[i - 1] == '\t'
-|| s[i - 1] == '\n'))
-s[i] = s[i] - 'a' + 'A';
-i++;
-}
+	while (str[index])
+	{
+		while (!(str[index] >= 'a' && str[index] <= 'z'))
+			index++;
 
-return (s);
+		if (str[index - 1] == ' ' ||
+		    str[index - 1] == '\t' ||
+		    str[index - 1] == '\n' ||
+		    str[index - 1] == ',' ||
+		    str[index - 1] == ';' ||
+		    str[index - 1] == '.' ||
+		    str[index - 1] == '!' ||
+		    str[index - 1] == '?' ||
+		    str[index - 1] == '"' ||
+		    str[index - 1] == '(' ||
+		    str[index - 1] == ')' ||
+		    str[index - 1] == '{' ||
+		    str[index - 1] == '}' ||
+		    index == 0)
+			str[index] -= 32;
+
+		index++;
+	}
+
+	return (str);
 }

@@ -1,25 +1,21 @@
-#include "holberton.h"
+#include "main.h"
 
 /**
- * factorial - find factorial of n
- * @n: number
- * Return: factorial of number, -1 if negative n
- */
+* factorial - searchs for the factorial of a number
+* @n: the number to find the factorial of
+*
+* Return: the factorial of the number
+*/
 
 int factorial(int n)
 {
-if (n < 0)
-{
-return (-1);
-}
+	int next;
 
-else if (n == 0)
-{
-return (1);
-}
+	if (n == 0)
+		return (1);
+	else if (n < 0)
+	return (-1);
 
-else
-{
-return (n * factorial(n - 1));
-}
+	next = factorial(n - 1);
+	return (n * next);
 }

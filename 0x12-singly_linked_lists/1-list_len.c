@@ -1,21 +1,24 @@
 #include "lists.h"
 
 /**
- *list_len - returns the number of elements in a linked list_t list.
- *@h: linked list
- *Return: number of elements in a linked list_t list
+ * list_len - Locate the No of elements linked-list
+ * @h: pointer - shows to the list
+ *
+ * Return: returns No of elements count
+ *
+ * ALX PROJECTS
  */
+
 size_t list_len(const list_t *h)
 {
-size_t count = 0;
+	const list_t *pointer = h;
+	size_t count_nod = 0;
 
-while (h)
-{
-if (h->str == NULL)
-return (0);
-else
-count++;
-h = h->next;
+	for (; pointer != NULL; pointer = pointer->next)
+	{
+		count_nod++;
+	}
+	return (count_nod);
+	/**return the number of nodes**/
 }
-return (count);
-}
+/******STOP********/

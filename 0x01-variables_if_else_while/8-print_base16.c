@@ -1,23 +1,26 @@
 #include <stdio.h>
-
+#include <ctype.h>
 /**
- *main - prints hexadecimal base 0123456789abcdef, using putchar
- *Return: Always 0 (Success)
- */
+*main - Prints all single digits of base 16 followed by new line
+*
+*Return: returns 0
+*/
 int main(void)
 {
-	int n = '0';
-	int a_to_f = 'a';
+	int digit;
 
-	while (n <= '9') /*print 0-9*/
+	for (digit = '0'; digit <= '9'; digit++)
 	{
-		putchar(n);
-		n++;
-	}
-	while (a_to_f <= 'f') /*print a-f to finish hexbase*/
-	{
-		putchar(a_to_f);
-		a_to_f++;
+		putchar(digit);
+		if (digit == '9')
+		{
+			digit = 'a';
+			for (; digit <= 'f'; digit++)
+			{
+				putchar(digit);
+			}
+			break;
+		}
 	}
 	putchar('\n');
 	return (0);

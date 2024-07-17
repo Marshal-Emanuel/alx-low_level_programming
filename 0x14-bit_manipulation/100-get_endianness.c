@@ -1,20 +1,25 @@
-#include "holberton.h"
+#include "main.h"
 
+#include <stdio.h>
+#include <string.h>
+
+/********************START******************/
 /**
- *get_endianness - checks the endianness
- *Return: 0 if big endian, 1 if little endian
+ * get_endianness -function: Looks the endian.
+ *
+ * Return: For big_endian - 0.
+ *         For little_endian - 1.
+ *
+ *
+ *
+ * ALX PROJECTS
  */
+
+
 int get_endianness(void)
 {
-int i = 7245;
-char *n = (char *) &i;
-
-if (n)
-{
-return (1);
+	unsigned int tst_end = 1;
+	/*return endiannes*/
+	return (tst_end & 1);
 }
-else
-{
-return (0);
-}
-}
+/**********************STOP*********************/

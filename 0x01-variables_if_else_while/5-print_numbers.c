@@ -1,19 +1,18 @@
 #include <stdio.h>
-
+#include <ctype.h>
 /**
- *main - entry point
- *Return: is an integer
- */
+*main - Prints all single digits of base 10 followed by new line
+*
+*Return: returns 0
+*/
 int main(void)
 {
-	int num;
+	int digit;
 
-	num = 0;
-	while (num < 10)
+	for (digit = '0'; digit <= '9'; digit++)
 	{
-		printf("%d", num);
-		num++;
+		putchar(digit);
 	}
-	printf("\n");
+	putchar('\n');
 	return (0);
 }

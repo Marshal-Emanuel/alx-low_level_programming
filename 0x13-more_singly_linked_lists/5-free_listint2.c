@@ -1,21 +1,33 @@
 #include "lists.h"
+#include <stdlib.h>
 
+/***********START**********/
 /**
- *free_listint2 - frees a linked list
- *@head: pointer to the head pointer of the list
- *Return: nothing
+ * free_listint2 - Free list.
+ * @head:pointer:-show to the address of the
+ *        head of the linked-list.
+ *
+ * Return: Sets the head to NULL.
+ *
+ * ALX PROJECTS
  */
+
 void free_listint2(listint_t **head)
 {
-listint_t *p;
+	listint_t *pointer;
+	listint_t *nod_c;
 
-if (head == NULL) /* account for no linked list */
-return;
+	if (head != NULL)
+	{
+		pointer = *head;
+		while (pointer != NULL)
+		{
+			nod_c = pointer->next;
+			free(pointer);
+			pointer = nod_c;
+		}
 
-while (*head != NULL) /* have p keep track of head node and free */
-{
-p = *head;
-*head = p->next; /* move to next node while p frees prior */
-free(p);
+		*head = NULL;
+	}
 }
-}
+/**********STOP***********/

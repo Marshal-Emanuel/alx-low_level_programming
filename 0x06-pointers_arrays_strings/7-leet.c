@@ -1,28 +1,24 @@
-#include "holberton.h"
-
+#include "main.h"
 /**
- *leet - encodes a string into 1337
- *@s: string
- *Letters a and A should be replaced by 4
- *Letters e and E should be replaced by 3
- *Letters o and O should be replaced by 0
- *Letters t and T should be replaced by 7
- *Letters l and L should be replaced by 1
- *Return: nothing
+ * leet - encode into 1337speak
+ * @n: input value
+ * Return: n value
  */
-char *leet(char *s)
+char *leet(char *n)
 {
-int d[11] = {'a', 'A', 'e', 'E', 'o', 'O', 't', 'T', 'l', 'L'};
-int z[11] = {'4', '4', '3', '3', '0', '0', '7', '7', '1', '1'};
+	int i, j;
+	char s1[] = "aAeEoOtTlL";
+	char s2[] = "4433007711";
 
-int i, j;
-for (j = 0; s[j] != '\0'; j++)
-{
-for (i = 0; d[i] != '\0'; i++)
-{
-if (s[j] == d[i])
-s[j] = z[i];
-}
-}
-return (s);
+	for (i = 0; n[i] != '\0'; i++)
+	{
+		for (j = 0; j < 10; j++)
+		{
+			if (n[i] == s1[j])
+			{
+				n[i] = s2[j];
+			}
+		}
+	}
+	return (n);
 }

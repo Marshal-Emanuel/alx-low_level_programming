@@ -1,23 +1,33 @@
 #include "lists.h"
 
+/**********START*********/
 /**
- *add_nodeint -add node at the beginning of the list
- *@head: pointer to head pointer of the list
- *@n: int to add to the node
- *Return: address of the new node3
+ *add_nodeint - funstion puts a new_node at the start
+ *		of a linked list.
+ *@head:pointer: shows the address for the head of the linked-list
+ *@n:integer: shows new node
+ *
+ *Return:retturns empty list/NULL
+ *	Or address of element in list
+ *
+ * ALX PROJECTS
  */
+
 listint_t *add_nodeint(listint_t **head, const int n)
 {
-listint_t *new_node;
+	listint_t *nod_n;
 
-new_node = (listint_t *)malloc(sizeof(listint_t));
+	nod_n = malloc(sizeof(listint_t));
+	/**Return NULL**/
+	if (nod_n == NULL)
+		return (NULL);
 
-if (new_node == NULL)
-return (NULL);
+	nod_n->n = n;
+	/**next new node**/
+	nod_n->next = *head;
 
-new_node->n = n;
-new_node->next = *head;
-*head = new_node;
+	*head = nod_n;
 
-return (new_node);
+	return (nod_n);
 }
+/**********STOP*********/

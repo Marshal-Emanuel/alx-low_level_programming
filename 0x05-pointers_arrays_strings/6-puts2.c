@@ -1,31 +1,20 @@
-#include "holberton.h"
+#include "main.h"
 
 /**
- * _strlen - returns the length of a string
- * @s: string
- * Return: length
- */
-
-int _strlen(char *s)
-{
-int length = 0;
-while (*s != '\0')
-{
-length++;
-s++;
-}
-return (length);
-}
-
-/**
- *puts2 - prints the characters of a string
- *@str: character to print
- *Return: nothing
- */
+ * puts2 - prints part of a string
+ * @str: string to be printed
+ *
+ * Return: void
+ **/
 void puts2(char *str)
 {
-int i;
-for (i = 0; str[i] != '\0' && i < _strlen(str); i += 2)
+int i = 0;
+while (str[i] != '\0')
+{
+if (i % 2 == 0)
 _putchar(str[i]);
+i++;
+}
+
 _putchar('\n');
 }

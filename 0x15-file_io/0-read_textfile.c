@@ -1,49 +1,50 @@
-#include "holberton.h"
+#include "main.h"
 
+#include <stdio.h>
+#include <stdlib.h>
+
+/*******************START*******************/
 /**
- *read_textfile - reads a text file and
- *prints it to the POSIX standard output
- *@filename: file pointer
- *@letters: number of letters it should read and print
- *Return: actual number of letters it could read and print
+ * read_textfile - functions; reads text_file & prints to_stdout.
+ * @filename:pointer: shows to the name of the file.
+ * @letters: Shows the No. of letters the
+ *           function (read_textfile) should read & print.
+ *
+ * Return:Returns 0 if filename is NULL.
+ *
+ *
+ * ALX PROJECTS
  */
+
+
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-int fd;
-ssize_t fread, fwrite;
-char *buffer;
+	/****Declarations******/
+	int f_d;
+	ssize_t w_cnt;
+	ssize_t w_r;
+	char *buffer;
 
-if (filename == NULL)
-return (0);
+	if (filename == NULL)
+		return (0);
+	f_d = open(filename, O_RDONLY);
+	if (f_d == -1)
+		return (0);
+	buffer = malloc(sizeof(char) * letters);
+	if (buffer == NULL)
+	{
+		free(buffer);
+		return (0);
+	}
+	w_r = read(f_d, buffer, letters);
+	if (w_r == -1)
+		return (0);
+	w_cnt = write(STDOUT_FILENO, buffer, w_r);
+	if (w_cnt == -1 || w_r != w_cnt)
+		return (0);
 
-/*open file*/
-fd = open(filename, O_RDONLY);
-if (fd == -1)
-return (0);
-
-/*malloc buffer*/
-buffer = (char *)malloc(sizeof(char) * letters);
-if (buffer == NULL)
-return (0);
-
-/*read file*/
-fread = read(fd, buffer, letters);
-if (fread == -1)
-{
-free(buffer);
-close(fread);
-return (0);
+	free(buffer);
+	close(f_d);
+	return (w_cnt);
 }
-
-/*write file*/
-fwrite = write(STDOUT_FILENO, buffer, fread);
-if (fwrite == -1)
-{
-free(buffer);
-close(fd);
-return (0);
-}
-
-close(fd);
-return (fread);
-}
+/**************************STOP******************************/

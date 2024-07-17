@@ -1,25 +1,25 @@
-#include "holberton.h"
+#include "main.h"
 /**
- *print_diagonal - draw a diagonal in the terminal
- *@n: no. og times to print
- *Return: always 0
- */
+*print_diagonal - prints a diagonal
+*@n:parameter
+*Return:returns nothing
+*/
 void print_diagonal(int n)
 {
-int i = 0, j;
-while (i < n && n > 0)
+int len, space;
+if (n > 0)
 {
-j = 0;
-while (j < i)
+for (len = 0; len < n; len++)
 {
+for (space = 0; space < len; space++)
 _putchar(' ');
-j++;
-}
+
 _putchar('\\');
+
+if (len == (n - 1))
+continue;
 _putchar('\n');
-i++;
 }
-if (i == 0)
+}
 _putchar('\n');
-return;
 }
